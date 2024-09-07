@@ -32,7 +32,7 @@ public class Booking {
     @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "room_id")
     private Room room;
 
     public void calculateTotalNumOfGuests(){
