@@ -1,10 +1,13 @@
 package com.hSpace.HSpace.DTO;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.hSpace.HSpace.Entity.Booking;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Response {
     private int statusCode;
     private String message;
@@ -17,4 +20,6 @@ public class Response {
     private BookingDTO booking;
     private List<UserDTO> userList;
     private List<RoomDTO> roomList;
+    private List<BookingDTO> bookingDTOList;
+
 }
