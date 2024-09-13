@@ -78,6 +78,7 @@ public class UserServiceImpl implements IUserService {
         }catch (Exception e){
             response.setStatusCode(500);
             response.setMessage("Error occurred during login request");
+            e.printStackTrace();
         }
         return response;
     }
@@ -91,7 +92,11 @@ public class UserServiceImpl implements IUserService {
             response.setStatusCode(200);
             response.setMessage("Successfull");
             response.setUserList(userDTOList);
-        }catch (Exception e){
+        }catch(CustomException ce){
+            response.setStatusCode(404);
+            response.setMessage(ce.getMessage());
+
+        } catch (Exception e){
             response.setStatusCode(500);
             response.setMessage("Error occurred during get all users");
         }
@@ -135,7 +140,7 @@ public class UserServiceImpl implements IUserService {
             response.setStatusCode(500);
             response.setMessage("Error occurred during delete user having userId : " + userId);
         }
-        return null;
+        return response;
     }
 
     @Override
@@ -161,7 +166,7 @@ public class UserServiceImpl implements IUserService {
     public Response getMyInfo(String userEmail) {
         Response response = new Response();
         try{
-            User user = userRepository.findByEmail(userEmail).orElseThrow(()-> new CustomException("User Not Found : " + userEmail));
+            User user = userRepository.findByEmail(userEmail).orElseThrow(() -> new CustomException("User Not Found"));
             UserDTO userDTO = Utils.mapUserEntityToUserDTO(user);
             response.setStatusCode(200);
             response.setMessage("Successfull");
@@ -173,6 +178,6 @@ public class UserServiceImpl implements IUserService {
             response.setStatusCode(500);
             response.setMessage("Error occurred during get user by email : " + userEmail);
         }
-        return null;
+        return response;
     }
 }
