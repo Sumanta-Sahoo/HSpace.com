@@ -34,6 +34,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
 
         if(authHeader == null || authHeader.isBlank()){
             filterChain.doFilter(request, response);
+            return;
         }
 
         jwtToken = authHeader.substring(7);
