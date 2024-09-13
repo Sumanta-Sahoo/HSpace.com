@@ -24,7 +24,7 @@ public class Utils {
             char randomChar = ALPHANUMERIC_STRING.charAt(randomIndex);
             stringBuilder.append(randomChar);
         }
-        return null;
+        return stringBuilder.toString();
     }
 
     public static BookingDTO mapBookingEntityToBookingDTO(Booking booking){
