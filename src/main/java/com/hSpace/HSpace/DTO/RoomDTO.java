@@ -15,4 +15,16 @@ public class RoomDTO {
     private String roomPhotoUrl;
     private String roomDescription;
     private List<BookingDTO> bookings;
+
+    @Override
+    public String toString() {
+        return "RoomDTO{" +
+                "id=" + id +
+                ", roomType='" + roomType + '\'' +
+                ", roomPrice=" + roomPrice +
+                ", roomPhotoUrl='" + roomPhotoUrl + '\'' +
+                ", roomDescription='" + roomDescription + '\'' +
+                ", bookings=" + bookings +
+                '}';
+    }
 }
