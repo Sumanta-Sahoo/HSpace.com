@@ -37,7 +37,7 @@ public class UserServiceImpl implements IUserService {
         Response response = new Response();
         try{
            if(user.getRole() == null || user.getRole().isBlank()){
-               user.setRole("User");
+               user.setRole("USER");
            }
            if(userRepository.existsByEmail(user.getEmail())){
                throw new CustomException(user.getEmail() + " Already Exist !! Try Another One");
