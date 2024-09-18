@@ -33,7 +33,7 @@ public class BookingController {
     }
 
     @GetMapping("/get-by-code/{confirmationCode}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public ResponseEntity<Response> getBookingByConfirmationCode(@PathVariable String confirmationCode){
         Response response = bookingService.findBookingByConfirmationCode(confirmationCode);
         return ResponseEntity.status(response.getStatusCode()).body(response);
